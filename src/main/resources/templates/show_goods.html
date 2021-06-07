@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品展示页</title>
+</head>
+<body>
+
+
+<table border="1">
+    <tr>
+        <td>商品编号</td>
+        <td>商品名称</td>
+        <td>商品类型</td>
+        <td>购入价格</td>
+        <td>售出价格</td>
+        <td>生产日期</td>
+        <td>保质期</td>
+        <td>二维码信息</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each="item,itemStat:${goods_list}">
+        <td th:value="${item.goods_id}"></td>
+        <td th:value="${item.goods_name}"></td>
+        <td th:value="${item.goods_type}"></td>
+        <td th:value="${item.goods_in_price}"></td>
+        <td th:value="${item.goods_out_price}"></td>
+        <td th:value="${item.goods_manufacture_date}"></td>
+        <td th:value="${item.goods_expiration_date}"></td>
+        <td th:value="${item.goods_qrcode}"></td>
+        <td>
+            <a th:href="@{show_update_goods(goods_id=${item.goods_id})}">修改</a>
+            <a th:href="@{delete_goods}">删除</a>
+        </td>
+    </tr>
+</table>
+
+<hr>
+
+<a th:href="@{show_insert_goods}">添加</a>
+
+
+</body>
+</html>
